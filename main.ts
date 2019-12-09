@@ -1,3 +1,9 @@
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
+    info.changeScoreBy(1)
+    mySprite2.setPosition(Math.randomRange(0, 512), Math.randomRange(0, 512))
+    mySprite2.destroy()
+})
+let mySprite2: Sprite = null
 scene.setTileMap(img`
 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
 5 7 7 9 9 9 9 9 9 9 9 9 9 9 9 9 9 7 7 7 7 7 7 7 7 7 7 7 7 7 7 5 
@@ -39,34 +45,34 @@ scene.setTile(5, img`
 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-5 5 5 5 5 5 5 5 5 3 3 3 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-5 5 5 5 5 5 5 5 3 3 5 5 3 3 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-5 5 5 5 5 5 5 3 5 5 5 5 5 5 3 3 3 5 5 3 5 5 5 5 5 5 5 5 5 5 5 5 
-5 5 5 5 5 5 3 3 5 5 5 5 5 5 5 5 3 3 3 3 5 5 5 5 5 5 5 5 5 5 5 5 
-5 5 5 5 5 5 3 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-5 5 5 5 5 5 3 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-5 5 5 5 5 5 3 5 5 5 1 1 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-5 5 5 5 5 5 5 5 1 1 1 1 1 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-5 5 5 5 5 5 5 1 5 5 5 5 5 1 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-5 5 5 5 5 5 5 1 5 5 5 5 5 1 5 5 5 5 5 5 1 1 5 5 5 5 5 5 5 5 5 5 
-5 5 5 5 5 5 5 1 5 5 5 5 5 5 1 1 1 1 1 1 5 5 5 5 5 5 5 5 5 5 5 5 
-5 5 5 5 5 5 5 1 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-5 5 5 5 3 3 3 3 3 3 5 5 5 5 5 5 3 3 3 5 5 5 5 5 5 5 5 5 5 5 5 5 
-5 5 5 5 3 5 5 5 5 3 3 3 5 5 5 3 3 5 5 3 5 5 5 5 5 5 5 5 5 5 5 5 
-5 5 5 5 3 5 5 5 5 5 5 3 3 3 3 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-5 5 5 5 5 1 1 1 1 1 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-5 5 5 5 1 5 5 5 5 1 1 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-5 5 5 5 1 5 5 5 5 5 5 1 1 5 5 5 5 5 5 1 1 1 5 5 5 5 5 5 5 5 5 5 
-5 5 5 5 1 5 5 5 5 5 5 5 1 1 1 1 1 1 1 5 5 5 1 5 5 5 5 5 5 5 5 5 
-5 5 5 5 1 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 1 1 5 5 5 5 5 5 5 5 
-5 5 5 5 1 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f f f f f 5 5 5 5 5 5 5 
+5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f f 5 f f 5 f f 5 5 5 5 5 5 
+5 5 5 5 5 5 5 5 f f f f f f f f f f f f 5 5 5 5 5 5 f 5 5 5 5 5 
+5 5 5 5 5 5 5 f 5 5 5 5 5 f f 5 5 5 5 f f 5 5 5 5 5 f 5 5 5 5 5 
+5 5 5 5 5 5 5 f 5 5 5 5 5 f f 5 5 5 5 5 f 5 5 5 5 5 5 f f 5 5 5 
+5 5 5 5 5 5 5 5 f 5 5 5 5 f f 5 5 5 5 5 f f 5 5 5 5 5 5 f 5 5 5 
+5 5 5 5 5 5 5 5 f 5 5 5 5 5 f f 5 5 5 5 5 f 5 5 5 5 5 5 f 5 5 5 
+5 5 5 5 5 5 5 5 5 f 5 5 5 5 5 f f 5 5 5 5 f f 5 5 5 5 5 f 5 5 5 
+5 5 5 5 5 5 5 5 5 5 f 5 5 5 5 5 f f 5 5 5 5 f 5 5 5 5 5 f 5 5 5 
+5 5 5 5 5 5 5 5 5 5 f f 5 5 5 5 f f f 5 5 5 f f 5 5 5 5 f 5 5 5 
+5 5 5 5 5 5 5 5 5 5 5 5 f 5 5 5 5 f f 5 5 5 f f 5 5 5 5 f 5 5 5 
+5 5 5 5 5 5 5 5 5 5 5 5 5 f 5 5 5 f f 5 5 5 5 f f 5 5 f f 5 5 5 
+5 5 5 5 5 5 f f f f f f f f f 5 5 5 f f 5 5 5 5 f f 5 5 f f 5 5 
+5 5 5 5 f f 5 5 5 5 5 5 5 5 5 5 5 5 5 f f 5 5 5 5 f 5 5 5 f 5 5 
+5 5 5 5 f 5 5 f f f f f f f f f 5 5 5 5 f 5 5 5 5 5 f 5 5 5 f 5 
+5 5 5 5 f 5 f 5 5 5 5 5 5 5 5 f f 5 5 5 5 5 5 5 5 5 5 5 5 5 f 5 
+5 5 5 5 f 5 f 5 5 5 5 5 5 5 5 5 f f 5 5 5 5 5 5 5 5 5 5 5 5 f 5 
+5 5 5 5 f 5 f 5 5 5 5 5 5 5 5 5 5 f 5 5 5 5 5 5 5 5 5 5 5 5 f 5 
+5 5 5 5 f 5 f 5 5 5 5 5 5 5 5 5 5 f 5 5 5 5 5 5 5 5 5 f 5 5 f 5 
+5 5 5 5 f 5 f 5 5 5 5 5 5 5 5 5 5 f 5 5 5 5 5 5 5 5 5 f 5 5 f 5 
+5 5 5 5 f f f f 5 5 5 5 5 5 5 5 5 f 5 5 5 5 f 5 5 5 5 f 5 5 f 5 
+5 5 5 5 5 f 5 f f 5 5 5 5 5 5 5 5 f 5 5 5 5 f 5 5 5 5 f 5 5 f 5 
+5 5 5 5 5 5 f 5 f f 5 5 5 5 5 5 f f 5 5 5 5 f 5 5 5 5 5 5 5 f 5 
+5 5 5 5 5 5 f f 5 f f f f f f f f 5 5 5 5 5 5 5 5 5 5 5 5 5 f 5 
+5 5 5 5 5 5 5 f f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f 5 
+5 5 5 5 5 5 5 5 f f f f f f f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f 5 
+5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f f f 5 5 5 5 f f f f f f f f f 5 
+5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f f f f f f 5 5 5 5 5 5 5 5 5 
 `, true)
 scene.setTile(1, img`
 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
@@ -106,23 +112,61 @@ scene.setTile(6, img`
 `, true)
 let mySprite = sprites.create(img`
 . . . . . . . . . . . . . . . . 
-. . . . f f f f f f f . . . . . 
-. . . f f 2 2 2 2 f f f . . . . 
-. . . . f f f f f f f . . . . . 
-. . . . f 1 1 1 f f f . . . . . 
-. . . f 1 1 1 1 1 1 f . . . . . 
-. . f f 1 f 1 1 f 1 f f . . . . 
-. . f 1 1 1 4 4 1 1 1 f . . . . 
-. . f 1 1 4 4 4 1 1 1 f . . . . 
-. . f f 1 1 1 1 1 f 1 f . . . . 
-. . . f f 1 f 1 f 1 f f . . . . 
-. . . . f f f f f f f . . . . . 
-. . . . . . f f f . . . . . . . 
-. . . . . e f 1 f e . . . . . . 
-. . . . . . f f f . . . . . . . 
-. . . . . . f . f . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . 1 1 1 1 1 1 . . . . . 
+. . . . 1 d d d d d 1 1 . . . . 
+. . . . 1 d d d d d d 1 1 . . . 
+. . . . 1 d d d d f d d 1 . . . 
+. . . . 1 1 d d f d d d 1 1 . . 
+. . . . . 1 1 d f f f f 1 1 . . 
+. . . . . . 1 d d d d 1 1 . . . 
+. . . . . . . 1 1 1 1 . . . . . 
+. . . . . . 1 9 9 1 1 1 1 1 . . 
+. . . . . 1 . 1 9 1 1 1 . . . . 
+. . . . . . . 1 9 9 9 1 . . . . 
+. . . . . . . 1 9 1 9 1 . . . . 
+. . . . . . . 1 9 1 1 1 . . . . 
 `, SpriteKind.Player)
 // Controls the sprite
 controller.moveSprite(mySprite)
 // Camera follows sprite throughout game
 scene.cameraFollowSprite(mySprite)
+for (let index = 0; index < 6; index++) {
+    mySprite2 = sprites.create(img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . d d d . . . . . . 
+. . . . . . d b b b . . . . . . 
+. . . . . . d b d d . . . . . . 
+. . . . . . b d d d . . . . . . 
+. . . . . . b c d b d . . . . . 
+. . . . . . c b c b d d . . . . 
+. . . . . . b d b d b d . . . . 
+d d b d c d b d b d c d d c d f 
+c b b b b d d d d d d b d c f b 
+d f b c d c f b d b d d c b . . 
+. . . . b c f b d d b b d d . . 
+. . . . b c f d d d d . . . . . 
+. . . . b f b d d d d . . . . . 
+. . . b b f d d d d d b . . . . 
+. . . d c b d d d d d d . . . . 
+. . . . . b d d d d d d . . . . 
+. . . . . b d d b d d d . . . . 
+. . . . . b d d b d d d b . . . 
+. c c c c b d d b d d d d c c . 
+c d d d b b d b b d d d d b d c 
+b d d b d b d b b d d b d b d b 
+b d d b d d d b b d d b b b d b 
+b d d d b d d b b d d b b d d b 
+b d d d d b b b b b b b b d d b 
+b d d d d d b b b b b d d d d b 
+c d d d d d d d d d d d d d d c 
+b c c d d d d d d d d d d c c b 
+d b b b b b b b b b b b b b b d 
+d b b b b c c c c c c b b b b d 
+c b b b b b b b b b b b b b b c 
+f c c c c c c c c c c c c c c f 
+`, SpriteKind.Food)
+    mySprite.setPosition(Math.randomRange(0, 512), Math.randomRange(0, 512))
+}
+info.startCountdown(30)
